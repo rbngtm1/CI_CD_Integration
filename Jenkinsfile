@@ -1,4 +1,4 @@
-node('maven'){
+node{
      def mvnhome = tool name: 'maven360', type: 'maven'
     stage('Git upload'){
    //     git credentialsId: 'demo', url: 'https://github.com/Prabhu4tx/addressbook'
@@ -9,7 +9,8 @@ node('maven'){
         //def mvnCMD = "${MavenHome}/bin/mvn"
         //sh "${mvnCMD} clean compile"
         //sh "${mvnCMD} package"
-         sh "$mvnhome/bin/mvn clean test surefire-report:report-only"
+         sh "$mvnhme/bin mvn clean test"
+        // sh "$mvnhome/bin/mvn clean test surefire-report:report-only"
         
     }
        stage ('package'){
