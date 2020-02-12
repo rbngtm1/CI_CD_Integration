@@ -1,7 +1,8 @@
 node{
-     echo "hithere"
+     {
+     sh "echo 'hithere'"
 }
-stage 1 {
+stage('one'){
      def mvnhome = tool name: 'maven360', type: 'maven'
     stage('Git upload'){
    //     git credentialsId: 'demo', url: 'https://github.com/Prabhu4tx/addressbook'
