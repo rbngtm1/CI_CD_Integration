@@ -14,3 +14,5 @@ sudo chkconfig tomcat on
 sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
 sudo cp jenkins.war /var/lib/tomcat/webapps
 # Note: you can always to to /usr/share/tomcat/.jenkins/secrets/initialAdminPassword to see your initialAdminPassword
+sudo yum update -y
+sudo yum install git -y
