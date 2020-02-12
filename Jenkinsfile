@@ -7,6 +7,7 @@ stage 1 {
    //     git credentialsId: 'demo', url: 'https://github.com/Prabhu4tx/addressbook'
         
     }
+}
     stage('Maven build'){
         //def MavenHome = tool name: 'maven', type: 'maven'
         //def mvnCMD = "${MavenHome}/bin/mvn"
@@ -19,3 +20,4 @@ stage 1 {
     //   stage ('package'){
     //    sh "$mvnhome/bin/mvn clean package -DskipTests=true"
    //     }
+}
