@@ -11,7 +11,7 @@ sudo cp /usr/placeholder.xml /usr/share/tomcat/conf/tomcat-users.xml
 sudo service tomcat start
 sudo chkconfig tomcat on
 # install jenkins inside tomcat
-sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
+sudo wget https://updates.jenkins-ci.org/latest/jenkins.war --no-check-certificate 
 sudo cp jenkins.war /var/lib/tomcat/webapps
 # Note: you can always to to /usr/share/tomcat/.jenkins/secrets/initialAdminPassword to see your initialAdminPassword
 sudo yum update -y
