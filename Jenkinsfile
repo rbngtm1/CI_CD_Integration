@@ -1,4 +1,8 @@
 node{
+   stage('git checkout'){
+      git credentialsId: 'git-token', url: 'https://github.com/rbngtm1/CI_CD_Integration'
+   }
+  
 stage('maven define'){
    // use the id of the globally configured maven instance
 def mvnTool = tool 'Apache Maven 3.6.2'
