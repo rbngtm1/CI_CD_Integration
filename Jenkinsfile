@@ -1,4 +1,4 @@
-node('maven'){
+node{
 stage('maven define'){
    // use the id of the globally configured maven instance
 def mvnTool = tool 'Apache Maven 3.6.2'
