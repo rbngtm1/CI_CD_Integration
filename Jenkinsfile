@@ -1,24 +1,20 @@
-node{
-     {
-     sh "echo 'hithere'"
+node('maven'){
+stage('maven define'){
+   // use the id of the globally configured maven instance
+def mvnTool = tool 'Apache Maven 3.6.2'
+
+// execute maven
+sh "${mvnTool}/bin/mvn clean package" 
+junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+sh "echo hello world"
+   }
+stage('artifacts'){
+archiveArtifacts '**/target/*.war'   
 }
-stage('one'){
-     def mvnhome = tool name: 'maven360', type: 'maven'
-    stage('Git upload'){
-   //     git credentialsId: 'demo', url: 'https://github.com/Prabhu4tx/addressbook'
-        
-    }
-}
-    stage('Maven build'){
-        //def MavenHome = tool name: 'maven', type: 'maven'
-        //def mvnCMD = "${MavenHome}/bin/mvn"
-        //sh "${mvnCMD} clean compile"
-        //sh "${mvnCMD} package"
-         sh "$mvnhme/bin mvn clean test"
-        // sh "$mvnhome/bin/mvn clean test surefire-report:report-only"
-    } 
-  //  }
-    //   stage ('package'){
-    //    sh "$mvnhome/bin/mvn clean package -DskipTests=true"
-   //     }
+#stage('deployment'){
+#        sshagent(['ec2-user']) {
+#        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.173.243.85 /home/ec2-user/tomcat9/bin/startup.sh"
+#        sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipeline-project/addressbook_main/target/addressbook.war ec2-user@54.173.243.85 /home/ec2-user/tomcat9/webapps"
+#       }
+#    }
 }
