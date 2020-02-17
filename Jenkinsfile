@@ -15,9 +15,7 @@ sh "echo hello world"
 stage('artifacts'){
 archiveArtifacts '**/target/*.war'   
 }
-stage ('package'){
-   sh "${mvnTool}/bin/mvn clean package -DskipTests=true"
-    }
+
        stage ('docker build')
     {
       // sh  "docker version"
