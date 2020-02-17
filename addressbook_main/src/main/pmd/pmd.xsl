@@ -30,8 +30,8 @@ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
       margin-left: 10px;
       margin-right: 10px;
       font:normal 80% arial,helvetica,sanserif;
-      background-color:#FFFFFF;
-      color:#ffffed;
+      background-color:#add8e6;
+      color:#90ee90;
     }
     .a td {
       background: #efefef;
