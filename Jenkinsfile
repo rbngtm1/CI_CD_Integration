@@ -19,7 +19,7 @@ archiveArtifacts '**/target/*.war'
 
        stage ('docker build')
     {
-       sh  "docker version"
+       sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts ."
        sh "docker run -d rbngtm1/archiveartifacts"
        sh "docker push rbngtm1/archiveartifacts"
