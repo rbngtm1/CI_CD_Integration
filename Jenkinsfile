@@ -19,7 +19,7 @@ archiveArtifacts '**/target/*.war'
        stage ('docker build')
     {
       // sh  "docker version"
-        sh "docker build -t rbngtm1/myapp:2.1.1 ."
+        sh "docker build -t rbngtm1/myapp ."
     }
 //stage('deployment'){
 //       sshagent(['ec2-user']) {
