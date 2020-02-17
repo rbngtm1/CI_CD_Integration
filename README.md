@@ -1,3 +1,8 @@
 # CI_CD_Integration
-#### To access the page
+
+#### Master-slave architecture
+  * add node public key to masgter
+  * In jenkins GUI, add private ip of master and private key of node (in manage nodes)
+
+#### To access the page in current instance
   *  sudo cp /usr/share/tomcat/.jenkins/workspace/pipeline/addressbook_main/target/addressbook.war /var/lib/tomcat/webapps/
