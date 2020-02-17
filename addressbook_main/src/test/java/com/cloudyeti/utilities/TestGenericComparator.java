@@ -18,7 +18,7 @@ public class TestGenericComparator
 {
         public void initialize(ArrayList myData) { 
                 UnitDTO d1 = new UnitDTO(); 
-                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("Sriram");d1.setSpare(new Double(18.0));d1.setSpare2(new Double(18.0)); 
+                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("rbngtm1");d1.setSpare(new Double(18.0));d1.setSpare2(new Double(18.0)); 
                 UnitDTO d2 = new UnitDTO(); 
                 d2.setDeptID(100);d2.setEmpID(201);d2.setEmpName("Somebody");d2.setSpare(new Double(11.0));d2.setSpare2(new Double(11.0));
                 UnitDTO d3 = new UnitDTO(); 
@@ -32,7 +32,7 @@ public class TestGenericComparator
         }
         public void initialize2(ArrayList myData) { 
                 UnitDTO d1 = new UnitDTO(); 
-                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("Sriram");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
+                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("rbngtm1");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
                 UnitDTO d2 = new UnitDTO(); 
                 d2.setDeptID(100);d2.setEmpID(201);d2.setEmpName("Somebody");d2.setSpare(new Double(11.0));d2.setSpare2("B");
                 UnitDTO d3 = new UnitDTO(); 
@@ -46,7 +46,7 @@ public class TestGenericComparator
         }
         public void initialize3(ArrayList myData) { 
                 UnitDTO d1 = new UnitDTO(); 
-                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("Sriram");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
+                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("rbngtm1");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
                 UnitDTO d2 = new UnitDTO(); 
                 d2.setDeptID(100);d2.setEmpID(201);d2.setEmpName("asma");d2.setSpare(new Double(11.0));d2.setSpare2("B");
                 UnitDTO d3 = new UnitDTO(); 
