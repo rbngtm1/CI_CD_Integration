@@ -1,8 +1,8 @@
-package com.edurekademo.utilities;
+package com.cloudyeti.utilities;
 
 import static org.junit.Assert.*;
 
-import com.edurekademo.utilities.HexAsciiConvertor;
+import com.cloudyeti.utilities.HexAsciiConvertor;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
