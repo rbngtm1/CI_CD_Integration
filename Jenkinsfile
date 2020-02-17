@@ -5,7 +5,7 @@ node{
   
 stage('maven define'){
    // use the id of the globally configured maven instance
-def mvnTool = tool 'Apache Maven 3.6.3'
+def mvnTool = tool 'maven-3.6.3'
 
 // execute maven
 sh "${mvnTool}/bin/mvn clean package" 
