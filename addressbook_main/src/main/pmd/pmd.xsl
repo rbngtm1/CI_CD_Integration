@@ -31,13 +31,13 @@ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
       margin-right: 10px;
       font:normal 80% arial,helvetica,sanserif;
       background-color:#FFFFFF;
-      color:#000000;
+      color:#ffffed;
     }
     .a td {
       background: #efefef;
     }
     .b td {
-      background: #fff;
+      background: #add8e6;
     }
     th, td {
       text-align: left;
