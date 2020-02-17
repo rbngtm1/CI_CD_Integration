@@ -15,6 +15,14 @@ sh "echo hello world"
 stage('artifacts'){
 archiveArtifacts '**/target/*.war'   
 }
+stage ('package'){
+        sh "$mvnTool/bin/mvn clean package -DskipTests=true"
+    }
+       stage ('docker build')
+    {
+      // sh  "docker version"
+        sh " docker build -t rbngtm1/myapp ."
+    }
 //stage('deployment'){
 //       sshagent(['ec2-user']) {
 //       sh "ssh -o StrictHostKeyChecking=no ec2-user@54.173.243.85 /home/ec2-user/tomcat9/bin/startup.sh"
