@@ -1,8 +1,8 @@
-package com.edurekademo.utilities;
+package com.cloudyeti.utilities;
 
 import java.io.IOException;
 
-import com.edurekademo.utilities.LoggerStackTraceUtil;
+import com.cloudyeti.utilities.LoggerStackTraceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
