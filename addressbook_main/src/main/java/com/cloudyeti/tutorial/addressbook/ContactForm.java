@@ -1,7 +1,7 @@
-package com.edurekademo.tutorial.addressbook;
+package com.cloudyeti.tutorial.addressbook;
 
 import com.vaadin.event.ShortcutAction;
-import com.edurekademo.tutorial.addressbook.backend.Contact;
+import com.cloudyeti.tutorial.addressbook.backend.Contact;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -12,7 +12,7 @@ import com.vaadin.v7.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.v7.data.fieldgroup.FieldGroup;
 import com.vaadin.v7.ui.DateField;
 import com.vaadin.v7.ui.TextField;
-import com.edurekademo.utilities.LoggerStackTraceUtil;
+import com.cloudyeti.utilities.LoggerStackTraceUtil;
 /* Create custom UI Components.
  *
  * Create your own Vaadin components by inheritance and composition.
