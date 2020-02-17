@@ -16,7 +16,7 @@ stage('artifacts'){
 archiveArtifacts '**/target/*.war'   
 }
 stage ('package'){
-        sh "$mvnTool/bin/mvn clean package -DskipTests=true"
+   sh "${mvnTool}/bin/mvn clean package -DskipTests=true"
     }
        stage ('docker build')
     {
