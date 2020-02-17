@@ -1,4 +1,4 @@
-package com.edurekademo.utilities;
+package com.cloudyeti.utilities;
 
 import java.io.InputStream;
 import java.util.Enumeration;
