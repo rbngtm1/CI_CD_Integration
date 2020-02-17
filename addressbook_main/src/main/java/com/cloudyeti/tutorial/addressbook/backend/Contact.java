@@ -1,4 +1,4 @@
-package com.edurekademo.tutorial.addressbook.backend;
+package com.cloudyeti.tutorial.addressbook.backend;
 
 import org.apache.commons.beanutils.BeanUtils;
 
