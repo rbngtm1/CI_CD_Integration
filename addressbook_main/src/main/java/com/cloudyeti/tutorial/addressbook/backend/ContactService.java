@@ -1,4 +1,4 @@
-package com.edurekademo.tutorial.addressbook.backend;
+package com.cloudyeti.tutorial.addressbook.backend;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -16,14 +16,8 @@ import java.util.logging.Logger;
 public class ContactService {
 
     // Create dummy data by randomly combining first and last names
-    static String[] fnames = { "Ramhari", "Alice", "John", "Mike", "Olivia",
-            "Nina", "Alex", "Rita", "Dan", "Umberto", "Henrik", "Rene", "Lisa",
-            "Linda", "Timothy", "Daniel", "Brian", "George", "Scott",
-            "Jennifer" };
-    static String[] lnames = { "Ghimire", "Johnson", "Williams", "Jones",
-            "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
-            "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
-            "Thompson", "Young", "King", "Robinson" };
+    static String[] fnames = { "Saurav", "Sanjog", "Kiran", "Robin" };
+    static String[] lnames = { "Sharma", "Sharma", "Sharma", "Gautam" };
 
     private static ContactService instance;
 
