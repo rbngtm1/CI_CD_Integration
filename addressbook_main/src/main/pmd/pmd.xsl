@@ -45,7 +45,7 @@ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
     }
     th {
       font-weight:bold;
-      background: #ccc;
+      background: #90ee90;
       color: black;
     }
     table, th, td {
