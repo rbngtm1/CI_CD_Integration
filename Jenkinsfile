@@ -15,11 +15,14 @@ sh "echo hello world"
 stage('artifacts'){
 archiveArtifacts '**/target/*.war'   
 }
+   
 
        stage ('docker build')
     {
-      // sh  "docker version"
-        sh "docker build -t rbngtm1/myapp:2.1.1 ."
+       sh  "docker version"
+       sh " docker build -t rbngtm1/archiveartifacts ."
+       sh "docker run -d rbngtm1/archiveartifacts"
+       sh "docker push rbngtm1/archiveartifacts"
     }
 //stage('deployment'){
 //       sshagent(['ec2-user']) {
