@@ -1,4 +1,4 @@
-package com.edurekademo.utilities;
+package com.cloudyeti.utilities;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
