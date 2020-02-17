@@ -1,44 +1,59 @@
+def mvnHome
+
 node{
    stage('git checkout'){
+      try {
       git credentialsId: 'git-token', url: 'https://github.com/rbngtm1/CI_CD_Integration'
+      } catch(err) {
+         sh "echo error in checkout"
+      }
    }
   
-stage('maven define'){
-   // use the id of the globally configured maven instance
-def mvnTool = tool 'maven-3.6.3'
-
-// execute maven
-sh "${mvnTool}/bin/mvn clean package" 
-junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
-sh "echo hello world"
+   stage('maven define'){
+      try {
+      mvnHome=tool 'maven-3.6.3'
+      sh "${mvnHome}/bin/mvn clean package" 
+      junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+      } catch(err) {
+         sh "echo error in defining maven"
+      }
    }
-stage('artifacts'){
-archiveArtifacts '**/target/*.war'   
-}
    
-
-       stage ('docker build')
-    {
+   stage('artifacts'){
+      try {
+      archiveArtifacts '**/target/*.war'   
+      } catch(err) {
+         sh "echo error in generating artifacts"
+      }
+   }
+   
+   stage ('docker build and push'){
+      try {
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts ."
        sh "docker run -d rbngtm1/archiveartifacts"
        sh "docker push rbngtm1/archiveartifacts"
-    }
-//stage('deployment'){
-//       sshagent(['ec2-user']) {
-//       sh "ssh -o StrictHostKeyChecking=no ec2-user@54.173.243.85 /home/ec2-user/tomcat9/bin/startup.sh"
-//       sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipeline-project/addressbook_main/target/addressbook.war ec2-user@54.173.243.85 /home/ec2-user/tomcat9/webapps"
-//      }
-//   }
- stage('deployment')
-    {
-        sshagent(['ec2-user'])
-        {
+      } catch(err) {
+         sh "echo error in docker build and pushing to docker hub"
+      }
+   }
+
+   stage('deployment of application') {
+      try {
+        sshagent(['ec2-user']){
             sh "ssh -o StrictHostKeyChecking=no ec2-user@54.80.200.161 /home/ec2-user/tomcat9/bin/startup.sh"
             sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipe-line-project/target/addressbook.war ec2-user@3.88.86.159:/home/ec2-user/tomcat9/webapps"
+        } catch(err) {
+           sh "echo error in deployment of an application"
         }
-    }
-    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key-shared', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                sh "aws s3 cp target/addressbook.war s3://mybucket/"
-}
+   }
+      
+   stage('artifacts to s3'){
+      try {
+      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key-shared', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+      sh "aws s3 cp target/addressbook.war s3://mybucket/"
+      } catch(err) {
+         sh "echo error in sending artifacts to s3"
+      }
+   }
 }
