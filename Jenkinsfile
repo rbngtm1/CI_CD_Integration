@@ -30,4 +30,15 @@ archiveArtifacts '**/target/*.war'
 //       sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipeline-project/addressbook_main/target/addressbook.war ec2-user@54.173.243.85 /home/ec2-user/tomcat9/webapps"
 //      }
 //   }
+ stage('deployment')
+    {
+        sshagent(['ec2-user'])
+        {
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@54.80.200.161 /home/ec2-user/tomcat9/bin/startup.sh"
+            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipe-line-project/target/addressbook.war ec2-user@3.88.86.159:/home/ec2-user/tomcat9/webapps"
+        }
+    }
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key-shared', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                sh "aws s3 cp target/addressbook.war s3://mybucket/"
+}
 }
