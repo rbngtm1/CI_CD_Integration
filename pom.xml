@@ -15,7 +15,7 @@
         <!-- A workaround for a bug in PMD -->
         <sourceJdk>1.8</sourceJdk>
         <targetJdk>1.8</targetJdk>
-        <github.account>SeshagiriSriram</github.account>
+        <github.account>rbngtm1</github.account>
         <thucydides.version>0.9.268</thucydides.version>
         <jelastic.context>addressbook</jelastic.context>
     </properties>

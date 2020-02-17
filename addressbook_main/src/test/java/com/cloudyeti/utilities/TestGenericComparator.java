@@ -10,10 +10,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.*; 
-/**
- * @author Seshagiri Sriram
- *
- */
 
 @SuppressWarnings({"rawtypes","unchecked"})
 
@@ -143,7 +139,7 @@ public class TestGenericComparator
     public void testSortEmpSpareDesc() {
             ArrayList myData = new ArrayList(); initialize(myData);
             Collections.sort(myData, new GenericComparator("spare", false)); // sort Descending 
-            assertEquals("Sriram", ((UnitDTO)myData.get(0)).getEmpName()); 
+            assertEquals("rbngtm1", ((UnitDTO)myData.get(0)).getEmpName()); 
             
     }
 
@@ -155,7 +151,7 @@ public class TestGenericComparator
             ArrayList myData = new ArrayList(); initialize(myData);
 
             Collections.sort(myData, new GenericComparator("spare2", false)); // sort Descending 
-            assertEquals("Sriram", ((UnitDTO)myData.get(0)).getEmpName()); 
+            assertEquals("rbngtm1", ((UnitDTO)myData.get(0)).getEmpName()); 
             
     }
 

@@ -11,12 +11,12 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <vaadin.version>8.0.0.alpha2</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
-			<sauceUser>ssriram</sauceUser>
+			<sauceUser>rbngtm1</sauceUser>
 		<sauceKey>198ffad5-5b21-421b-9f62-847273245db2</sauceKey>
 		   <skipTests>false</skipTests>
            <skipITs>${skipTests}</skipITs>
            <skipUTs>${skipTests}</skipUTs>
-		   	        <github.account>SeshagiriSriram</github.account>
+		   	        <github.account>rbngtm1</github.account>
 
     </properties>
 	

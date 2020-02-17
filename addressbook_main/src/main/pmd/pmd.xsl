@@ -6,7 +6,6 @@ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
 <!-- keys for violations list -->
 <xsl:key name="violations" match="violation" use="@rule" />
 
-<!-- XSL for PMD report. Author : Seshagiri Sriram. -->
 <!-- Inspired by Checkstyle -->
 
 <xsl:template name="timestamp">

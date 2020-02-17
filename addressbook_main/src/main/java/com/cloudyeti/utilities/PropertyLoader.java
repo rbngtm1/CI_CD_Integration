@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
  * optional leading "/" and optional ".properties" suffix. Thus, the
  * following names refer to the same resource:
  *
- * @author Seshagiri Sriram
  * @version 1.0 
  * @param name classpath resource name [may not be null] 
  * @param loader classloader through which to load the resource [null 

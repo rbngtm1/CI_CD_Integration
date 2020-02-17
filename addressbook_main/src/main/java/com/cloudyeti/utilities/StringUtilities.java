@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 /**
  * An utility class that is used to split an string into an array list and providing mechanism to 
  * build a HashMap value based on a variable number of arguements. 
- * @author Seshagiri Sriram
  * @version 1.0 
  *
  */

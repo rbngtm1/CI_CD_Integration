@@ -5,16 +5,6 @@ import java.lang.reflect.Method;
 import java.util.Comparator;
 import java.util.Date;
 
-/**
-* Sorting - Generic Comparator
-*
-* @author Seshagiri Sriram
-* @version 1.0 
-* @since Janauary 12, 2015
-* 
-* This is an adaptation of a genenic comparator found on github linked from myjeeva.com 
-* Many thanks for the code!
-*/
 
 @SuppressWarnings("rawtypes")
 public class GenericComparator implements Comparator, Serializable {

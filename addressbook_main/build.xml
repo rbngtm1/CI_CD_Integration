@@ -319,7 +319,7 @@
     	 	<attribute name="Created-By" value="Build Tool V1"/>
     	    <attribute name="Implementation-Title" value="${actualbuildname}.jar"/>
     	    <attribute name="Implementation-Version" value="${maven.build.version}-${MYTIME}"/> 
-    	    <attribute name="Implementation-Vendor" value="SeshagiriSriram"/>
+    	    <attribute name="Implementation-Vendor" value="rbngtm1"/>
     	 	<attribute name="Class-Path" value="${manifest.classpath}"/>
     	 </manifest>
    </jar>
