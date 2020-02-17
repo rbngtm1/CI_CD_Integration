@@ -46,7 +46,7 @@ public class TestGenericComparator
         }
         public void initialize3(ArrayList myData) { 
                 UnitDTO d1 = new UnitDTO(); 
-                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("rbngtm1");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
+                d1.setDeptID(100);d1.setEmpID(200);d1.setEmpName("Sriram");d1.setSpare(new Double(18.0));d1.setSpare2("A"); 
                 UnitDTO d2 = new UnitDTO(); 
                 d2.setDeptID(100);d2.setEmpID(201);d2.setEmpName("asma");d2.setSpare(new Double(11.0));d2.setSpare2("B");
                 UnitDTO d3 = new UnitDTO(); 
@@ -139,7 +139,7 @@ public class TestGenericComparator
     public void testSortEmpSpareDesc() {
             ArrayList myData = new ArrayList(); initialize(myData);
             Collections.sort(myData, new GenericComparator("spare", false)); // sort Descending 
-            assertEquals("rbngtm1", ((UnitDTO)myData.get(0)).getEmpName()); 
+            assertEquals("Sriram", ((UnitDTO)myData.get(0)).getEmpName()); 
             
     }
 
@@ -151,7 +151,7 @@ public class TestGenericComparator
             ArrayList myData = new ArrayList(); initialize(myData);
 
             Collections.sort(myData, new GenericComparator("spare2", false)); // sort Descending 
-            assertEquals("rbngtm1", ((UnitDTO)myData.get(0)).getEmpName()); 
+            assertEquals("Sriram", ((UnitDTO)myData.get(0)).getEmpName()); 
             
     }
 
