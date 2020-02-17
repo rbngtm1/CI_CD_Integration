@@ -1,4 +1,4 @@
-package com.edurekademo.tutorial.addressbook;
+package com.cloudyeti.tutorial.addressbook;
 
 import javax.servlet.annotation.WebServlet;
 
