@@ -42,7 +42,9 @@ node{
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
        sh "docker run -d rbngtm1/archiveartifacts:newtag"
+       withDockerRegistry(credentialsId: 'docker-cred', url: 'https://hub.docker.com') {
        sh "docker push rbngtm1/archiveartifacts:newtag"
+        }
       } catch(err) {
          sh "echo error in docker build and pushing to docker hub"
       }
