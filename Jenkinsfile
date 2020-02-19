@@ -20,7 +20,7 @@ node{
    
    stage('artifacts'){
       try {
-      archiveArtifacts 'target/**/*'   
+      archiveArtifacts 'addressbook_main/target/**/*'   
       } catch(err) {
          sh "echo error in generating artifacts"
       }
