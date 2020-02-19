@@ -13,7 +13,7 @@ node{
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test surefire-report:report-only" 
-     // sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
+      sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
       } catch(err) {
          sh "echo error in defining maven"
       }
@@ -21,7 +21,7 @@ node{
    
    stage('artifacts'){
       try {
-         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*'
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war'
       } catch(err) {
          sh "echo error in generating artifacts"
       }
@@ -40,7 +40,7 @@ node{
    stage ('docker build and push'){
       try {
        sh "docker version"
-       sh "docker build -t rbngtm1/archiveartifacts ."
+       sh "docker build -t rbngtm1/archiveartifacts -f Dockerfile ."
        sh "docker run -d rbngtm1/archiveartifacts"
        sh "docker push rbngtm1/archiveartifacts"
       } catch(err) {
