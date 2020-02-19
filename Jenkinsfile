@@ -42,7 +42,7 @@ node{
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts -f Dockerfile ."
        sh "docker run -d rbngtm1/archiveartifacts"
-       sh "docker push rbngtm1/archiveartifacts"
+       sh "docker push rbngtm1/archiveartifacts:newtag"
       } catch(err) {
          sh "echo error in docker build and pushing to docker hub"
       }
