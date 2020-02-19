@@ -1,6 +1,4 @@
 #!/bin/bash
-# run the script in /opt
-sudo cd /opt
 sudo yum install tomcat -y
 sudo echo 'JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -Xmx1026m -XX:MaxPermSize=256m -XX:+UseConcMarkSweepGC"'>>/usr/share/tomcat/conf/tomcat.conf
 # install the web application manager and the documentation,
