@@ -31,7 +31,8 @@ node{
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'HTMLReport', reportTitles: ''])
+         sh "cp /usr/share/tomcat/.jenkins/jobs/pipeline/htmlreports/HTMLReport/htmlpublisher-wrapper.html addressbook_main/target/site"
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'HTMLReport', reportTitles: ''])
       } catch(err) {
          throw err
       }
