@@ -13,7 +13,7 @@ node{
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test surefire-report:report-only" 
-     // sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
+      sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
       } catch(err) {
          sh "echo error in defining maven"
       }
@@ -21,7 +21,7 @@ node{
    
    stage('artifacts'){
       try {
-         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*'
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war'
       } catch(err) {
          sh "echo error in generating artifacts"
       }
