@@ -13,7 +13,6 @@ node{
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean package" 
-      junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
       } catch(err) {
          sh "echo error in defining maven"
       }
@@ -21,9 +20,17 @@ node{
    
    stage('artifacts'){
       try {
-      archiveArtifacts '**/target/*.war'   
+      archiveArtifacts 'target/**/*'   
       } catch(err) {
          sh "echo error in generating artifacts"
+      }
+   }
+
+   stage('test and report'){
+      try {
+         echo "executing test cases"
+         junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTMLReport', reportTitles: ''])
       }
    }
    
