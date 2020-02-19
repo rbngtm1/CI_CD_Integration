@@ -13,6 +13,7 @@ node{
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test" 
+      sh "${mvnHome}/bin/mvn clean package" 
       } catch(err) {
          sh "echo error in defining maven"
       }
