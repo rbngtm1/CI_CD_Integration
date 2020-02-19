@@ -12,7 +12,7 @@ node{
    stage('maven define'){
       try {
       mvnHome=tool 'maven-3.6.3'
-      sh "${mvnHome}/bin/mvn clean package" 
+      sh "${mvnHome}/bin/mvn clean test" 
       } catch(err) {
          sh "echo error in defining maven"
       }
