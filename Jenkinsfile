@@ -13,7 +13,7 @@ node{
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test" 
-      sh "${mvnHome}/bin/mvn clean package" 
+      sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
       } catch(err) {
          sh "echo error in defining maven"
       }
@@ -31,7 +31,7 @@ node{
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'index.html', reportName: 'HTMLReport', reportTitles: ''])
       } catch(err) {
          throw err
       }
