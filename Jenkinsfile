@@ -43,12 +43,13 @@ node{
         sshagent(['ec2-user']){
             sh "ssh -o StrictHostKeyChecking=no ec2-user@54.80.200.161 /home/ec2-user/tomcat9/bin/startup.sh"
             sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/pipe-line-project/target/addressbook.war ec2-user@3.88.86.159:/home/ec2-user/tomcat9/webapps"
+            }
         } catch(err) {
            sh "echo error in deployment of an application"
         }
    }
       
-   stage('artifacts to s3'){
+   stage('artifacts to s3') {
       try {
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key-shared', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
       sh "aws s3 cp target/addressbook.war s3://mybucket/"
