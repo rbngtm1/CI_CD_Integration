@@ -20,7 +20,7 @@ node{
    
    stage('artifacts'){
       try {
-      archiveArtifacts 'addressbook_main/target/**/*'   
+      archiveArtifacts 'addressbook_main/target/**/*.war'   
       } catch(err) {
          sh "echo error in generating artifacts"
       }
@@ -29,7 +29,7 @@ node{
    stage('test and report'){
       try {
          echo "executing test cases"
-         junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+         junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
       } catch(err) {
          throw err
