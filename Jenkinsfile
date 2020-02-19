@@ -9,7 +9,7 @@ node{
       }
    }
   
-   stage('maven define'){
+   stage('maven test and package'){
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test" 
@@ -27,7 +27,7 @@ node{
       }
    }
 
-   stage('test and report'){
+   stage('test case and report'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
