@@ -11,6 +11,7 @@ node('node'){
   
    stage('maven test and package'){
       try {
+      sh "${mvnHome}/bin/mvn --version"
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn clean test"
       sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
