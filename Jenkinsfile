@@ -22,7 +22,7 @@ node('node'){
    
    stage('artifacts'){
       try {
-         archiveArtifacts allowEmptyArchive: true, artifacts: 'target/**/*.war'
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'target/**/*'
       } catch(err) {
          sh "echo error in generating artifacts"
       }
@@ -32,7 +32,7 @@ node('node'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
-       //  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
       } catch(err) {
          throw err
       }
