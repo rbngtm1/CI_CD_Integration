@@ -22,7 +22,7 @@ node('node'){
    
    stage('artifacts'){
       try {
-         archiveArtifacts allowEmptyArchive: true, artifacts: '/**/*'
+         archiveArtifacts allowEmptyArchive: true, artifacts: '**/*'
       } catch(err) {
          sh "echo error in generating artifacts"
       }
