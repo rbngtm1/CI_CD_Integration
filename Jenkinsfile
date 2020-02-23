@@ -13,7 +13,7 @@ node('node'){
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn --version"
-      sh "${mvnHome}/bin/mvn clean test surefire-report:report-only"
+      sh "${mvnHome}/bin/mvn clean test"
       sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
       } catch(err) {
          sh "echo error in defining maven"
@@ -32,7 +32,7 @@ node('node'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+        // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
          //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports/SureFireReportHTML', reportName: 'HTMLReport', reportTitles: ''])
         // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports_2fSureFireReportHTML', reportName: 'htmlreports/htmlreports_2fSureFireReportHTML', reportTitles: ''])
       } catch(err) {
