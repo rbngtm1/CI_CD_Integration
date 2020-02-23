@@ -46,7 +46,7 @@ node('node'){
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
        sh "docker run -d rbngtm1/archiveartifacts:newtag"
-       node.withDockerRegistry(credentialsId: 'docker-hub-registry', url: 'https://hub.docker.com/') {
+       node.withDockerRegistry(credentialsId: 'docker-hub-registry') {
        sh "docker push rbngtm1/archiveartifacts:newtag"
         }
       } catch(err) {
