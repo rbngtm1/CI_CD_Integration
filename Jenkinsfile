@@ -25,7 +25,7 @@ node('node'){
          echo "executing test cases"
          //sh "sudo cp /usr/share/tomcat/.jenkins/jobs/pipeline/htmlreports/HTMLReport/htmlpublisher-wrapper.html /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/surefire-reports"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'surefire-report.html', reportName: 'HTMLReport', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'surefire-report.html', reportName: 'SureFireReportHTML', reportTitles: ''])
          //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports/SureFireReportHTML', reportName: 'HTMLReport', reportTitles: ''])
         // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports_2fSureFireReportHTML', reportName: 'htmlreports/htmlreports_2fSureFireReportHTML', reportTitles: ''])
       } catch(err) {
@@ -60,7 +60,7 @@ node('node'){
         sshagent(['ec2-user']){
            // clone the repo on target /opt
             sh "ssh -o StrictHostKeyChecking=no ec2-user@3.228.14.118 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
-            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@3.88.86.159:/home/ec2-user/"
+            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@3.228.14.118:/var/lib/tomcat/webapps/"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
