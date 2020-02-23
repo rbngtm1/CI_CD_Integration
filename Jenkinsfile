@@ -61,7 +61,8 @@ node('node'){
            // clone the repo on target /opt
             sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.133 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
             sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.133:/tmp/"
-            sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
+            sh "if [ ! -f '/var/lib/tomcat/webapps/addressbook.war' ]; then sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/; fi"
+           // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
