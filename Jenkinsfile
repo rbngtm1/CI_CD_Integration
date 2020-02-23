@@ -25,7 +25,7 @@ node('node'){
          echo "executing test cases"
          //sh "sudo cp /usr/share/tomcat/.jenkins/jobs/pipeline/htmlreports/HTMLReport/htmlpublisher-wrapper.html /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/surefire-reports"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'SureFireReportHTML', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'htmlreports_2fSureFireReportHTML', reportTitles: ''])
          //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports/SureFireReportHTML', reportName: 'HTMLReport', reportTitles: ''])
         // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports_2fSureFireReportHTML', reportName: 'htmlreports/htmlreports_2fSureFireReportHTML', reportTitles: ''])
       } catch(err) {
