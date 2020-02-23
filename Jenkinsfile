@@ -20,14 +20,6 @@ node('node'){
       }
    }
    
-   stage('artifacts'){
-      try {
-         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*'
-      } catch(err) {
-         sh "echo error in generating artifacts"
-      }
-   }
-
    stage('test case and report'){
       try {
          echo "executing test cases"
@@ -41,6 +33,14 @@ node('node'){
       }
    }
    
+      stage('artifacts'){
+      try {
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*'
+      } catch(err) {
+         sh "echo error in generating artifacts"
+      }
+   }
+
    stage ('docker build and push'){
       try {
        sh "docker version"
