@@ -70,11 +70,8 @@ node('node'){
       
    stage('artifacts to s3') {
       // you need cloudbees aws credentials
-      try {
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 's3-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-      sh "aws s3 ls"
-      //sh "aws s3 cp addressbook_main/target/addressbook.war s3://cicd-bucket1/"
-         }
+         sh "aws s3 ls"
       } catch(err) {
          sh "echo error in sending artifacts to s3"
       }
