@@ -71,7 +71,7 @@ node('node'){
    stage('artifacts to s3') {
       try {
       // you need cloudbees aws credentials
-      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 's3-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
          sh "aws s3 ls"
          }
       } catch(err) {
