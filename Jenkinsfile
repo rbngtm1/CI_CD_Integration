@@ -60,7 +60,7 @@ node('node'){
         sshagent(['ec2-user-target']){
            // clone the repo on target /opt
             sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.133 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
-            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.133:/home/ec2-user"
+            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.133:/var/lib/jenkins/workspace"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
