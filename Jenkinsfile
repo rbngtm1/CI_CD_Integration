@@ -32,7 +32,7 @@ node('node'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'surefire-report.html', reportName: 'HTMLReport', reportTitles: ''])
          //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports/SureFireReportHTML', reportName: 'HTMLReport', reportTitles: ''])
         // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlreports_2fSureFireReportHTML', reportName: 'htmlreports/htmlreports_2fSureFireReportHTML', reportTitles: ''])
       } catch(err) {
