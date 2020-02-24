@@ -30,13 +30,13 @@ node('node'){
       }
    }
    
-//       stage('artifacts'){
-//       try {
-//          archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war'
-//       } catch(err) {
-//          sh "echo error in generating artifacts"
-//       }
-//    }
+      stage('artifacts'){
+      try {
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war'
+      } catch(err) {
+         sh "echo error in generating artifacts"
+      }
+   }
 
 //    stage ('docker build and push'){
 //       try {
