@@ -58,22 +58,22 @@ node('node'){
            // clone the repo on target /opt
             sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.167 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
             sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.167:/tmp/"
-            sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
+           // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
         }
    }
       
-//    stage('artifacts to s3') {
-//       try {
-//       // you need cloudbees aws credentials
-//       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-//          sh "aws s3 ls"
-//          sh "aws s3 cp addressbook_main/target/addressbook.war s3://cicd-bucket1/"
-//          }
-//       } catch(err) {
-//          sh "echo error in sending artifacts to s3"
-//       }
-//    }
+   stage('artifacts to s3') {
+      try {
+      // you need cloudbees aws credentials
+      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+         sh "aws s3 ls"
+         sh "aws s3 cp addressbook_main/target/addressbook.war s3://cloudyeticicd/"
+         }
+      } catch(err) {
+         sh "echo error in sending artifacts to s3"
+      }
+   }
 }
