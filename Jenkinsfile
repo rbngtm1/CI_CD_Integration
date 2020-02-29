@@ -20,15 +20,15 @@ node('node'){
       }
    }
    
-//    stage('test case and report'){
-//       try {
-//          echo "executing test cases"
-//          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-//          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'SureFireReportHTML', reportTitles: ''])
-//       } catch(err) {
-//          throw err
-//       }
-//    }
+   stage('test case and report'){
+      try {
+         echo "executing test cases"
+         junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'surefire-report.html', reportName: 'SureFireReportHTML', reportTitles: ''])
+      } catch(err) {
+         throw err
+      }
+   }
    
 //       stage('artifacts'){
 //       try {
