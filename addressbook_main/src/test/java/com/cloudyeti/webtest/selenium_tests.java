@@ -1,4 +1,4 @@
-package com.edurekademo.webtest;
+package com.cloudyeti.webtest;
 import static org.junit.Assert.*;
 
 import org.openqa.selenium.WebDriver;

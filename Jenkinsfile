@@ -13,8 +13,7 @@ node('node'){
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn --version"
-      sh "${mvnHome}/bin/mvn clean test surefire-report:report-only"
-      sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
+      sh "${mvnHome}/bin/mvn clean test surefire-report:report"
       } catch(err) {
          sh "echo error in defining maven"
       }
@@ -24,14 +23,15 @@ node('node'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/surefire-reports', reportFiles: 'htmlpublisher-wrapper.html', reportName: 'SureFireReportHTML', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site', reportFiles: 'surefire-report.html', reportName: 'SureFireReportHTML', reportTitles: ''])
       } catch(err) {
          throw err
       }
    }
    
-      stage('artifacts'){
+      stage('package and artifacts'){
       try {
+         sh "${mvnHome}/bin/mvn clean package -DskipTests=true"
          archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war'
       } catch(err) {
          sh "echo error in generating artifacts"
@@ -56,9 +56,9 @@ node('node'){
       try {
         sshagent(['ec2-user-target']){
            // clone the repo on target /opt
-            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.133 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
-            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.133:/tmp/"
-            sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.167 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
+            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.167:/tmp/"
+           // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
@@ -70,7 +70,7 @@ node('node'){
       // you need cloudbees aws credentials
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
          sh "aws s3 ls"
-         sh "aws s3 cp addressbook_main/target/addressbook.war s3://cicd-bucket1/"
+         sh "aws s3 cp addressbook_main/target/addressbook.war s3://cloudyeticicd/"
          }
       } catch(err) {
          sh "echo error in sending artifacts to s3"
