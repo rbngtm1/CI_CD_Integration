@@ -12,3 +12,6 @@
   
 #### Maven SureFire Report
   * https://maven.apache.org/surefire/maven-surefire-report-plugin/
+
+#### HTML Publisher
+  * The HTML Publisher plugin is useful to publish HTML reports that your build generates to the job and build pages. It is designed to work with both Freestyle projects as well as being used in a Jenkins Pipeline.
