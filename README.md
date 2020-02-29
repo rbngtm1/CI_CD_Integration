@@ -6,3 +6,9 @@
 
 #### To access the page in current instance
   *  sudo cp /usr/share/tomcat/.jenkins/workspace/pipeline/addressbook_main/target/addressbook.war /var/lib/tomcat/webapps/
+  
+#### Maven Build LifeCycle
+  * http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+  
+#### Maven SureFire Report
+  * https://maven.apache.org/surefire/maven-surefire-report-plugin/
