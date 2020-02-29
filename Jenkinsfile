@@ -15,6 +15,7 @@ node('node'){
       sh "${mvnHome}/bin/mvn --version"
       sh "${mvnHome}/bin/mvn clean test surefire-report:report"
       sh "${mvnHome}/bin/mvn clean package -DskipTest=true" 
+      sh "${mvnHome} site"
       } catch(err) {
          sh "echo error in defining maven"
       }
