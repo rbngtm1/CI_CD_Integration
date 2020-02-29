@@ -25,7 +25,7 @@ node('node'){
       try {
          echo "executing test cases"
          junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site', reportFiles: 'surefire-reports.html', reportName: 'SureFireReportHTML', reportTitles: ''])
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site', reportFiles: 'surefire-report.html', reportName: 'SureFireReportHTML', reportTitles: ''])
       } catch(err) {
          throw err
       }
