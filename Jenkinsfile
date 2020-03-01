@@ -42,9 +42,8 @@ node('node'){
       try {
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
-       sh "docker run -d rbngtm1/archiveartifacts:newtag"
-      // withDockerRegistry(credentialsId: 'docker-hub-registry')
-       docker.withRegistry('', 'docker-hub-registry')  {
+       sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
+       withDockerRegistry(credentialsId: 'docker-hub-registry') {
        sh "docker push rbngtm1/archiveartifacts:newtag"
         }
       } catch(err) {
@@ -55,10 +54,10 @@ node('node'){
    stage('deployment of application') {
       try {
         sshagent(['ec2-user-target']){
-           // clone the repo on target /opt
-            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.167 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
-            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.167:/tmp/"
-           // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
+           // clone the repo on target in tmp
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.163 /tmp/CI_CD_Integration/tomcat.sh"
+            sh "scp -o StrictHostKeyChecking=no addressbook_main/target/addressbook.war ec2-user@10.0.0.163:/tmp"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.163 /tmp/CI_CD_Integration/symlink_target.sh"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
