@@ -42,7 +42,7 @@ node('node'){
       try {
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
-       sh "docker run -d rbngtm1/archiveartifacts:newtag"
+       sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
       // withDockerRegistry(credentialsId: 'docker-hub-registry')
        //docker.withRegistry('', 'docker-hub-registry')  {
        withDockerRegistry(credentialsId: 'docker-hub-registry') {
