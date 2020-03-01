@@ -9,7 +9,7 @@ node('node'){
       }
    }
   
-   stage('maven test and package'){
+   stage('maven test'){
       try {
       mvnHome=tool 'maven-3.6.3'
       sh "${mvnHome}/bin/mvn --version"
