@@ -57,8 +57,8 @@ node('node'){
            // clone the repo on target /opt
           //  sh "scp -o StrictHostKeyChecking=no /opt/CI_CD_Integration/tomcat.sh ec2-user@10.0.0.163:/tmp"
             sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.163 /tmp/tomcat.sh"
-            sh "scp -o StrictHostKeyChecking=no addressbook_main/target/addressbook.war ec2-user@10.0.0.163:/tmp"
-            sh "sudo cp /tmp/addressbook.war /var/lib/tomcat/webapps/"
+            sh "scp -o StrictHostKeyChecking=no addressbook_main/target/addressbook.war ec2-user@10.0.0.163:/var/lib/tomcat/webapps"
+            //sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
         } catch(err) {
            sh "echo error in deployment of an application"
