@@ -43,8 +43,6 @@ node('node'){
        sh "docker version"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
        sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
-      // withDockerRegistry(credentialsId: 'docker-hub-registry')
-       //docker.withRegistry('', 'docker-hub-registry')  {
        withDockerRegistry(credentialsId: 'docker-hub-registry') {
        sh "docker push rbngtm1/archiveartifacts:newtag"
         }
@@ -57,8 +55,10 @@ node('node'){
       try {
         sshagent(['ec2-user-target']){
            // clone the repo on target /opt
-            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.167 /opt/CI_CD_Integration/install_tomcat_jenkins.sh"
-            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.167:/tmp/"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.163"
+            sh "cd /opt && git clone https://github.com/rbngtm1/CI_CD_Integration"
+            sh "cd /opt && ./install_tomcat_jenkins.sh"
+            sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.163:/tmp/"
            // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
         } catch(err) {
