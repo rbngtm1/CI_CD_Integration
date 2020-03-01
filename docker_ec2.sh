@@ -6,6 +6,7 @@ sudo usermod -a -G docker ec2-user
 sudo chmod 666 /var/run/docker.sock
 sudo docker info
 echo "============================"
+read -p "Please enter your dockerhub userid: " userid
 echo "Please enter the dockerhub password"
 read -s password
-docker login -u "rbngtm1" -p "$password" docker.io
+docker login -u $userid -p "$password" docker.io
