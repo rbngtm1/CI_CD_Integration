@@ -55,9 +55,8 @@ node('node'){
       try {
         sshagent(['ec2-user-target']){
            // clone the repo on target /opt
+            sh "scp -o StrictHostKeyChecking=no /opt/CI_CD_Integration ec2-user@10.0.0.163:/opt"
             sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.163"
-            sh "cd /opt && git clone https://github.com/rbngtm1/CI_CD_Integration"
-            sh "cd /opt && ./install_tomcat_jenkins.sh"
             sh "scp -o StrictHostKeyChecking=no /home/ec2-user/workspace/ex1/workspace/pipeline/addressbook_main/target/addressbook.war ec2-user@10.0.0.163:/tmp/"
            // sh "sudo ln -s /tmp/addressbook.war /var/lib/tomcat/webapps/"
             }
