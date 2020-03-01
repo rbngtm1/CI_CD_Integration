@@ -41,8 +41,6 @@ node('node'){
    stage ('docker build and push'){
       try {
        sh "docker version"
-       // removing all containers
-       sh "docker rm $(docker ps -a -q)"
        sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
        sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
        withDockerRegistry(credentialsId: 'docker-hub-registry') {
