@@ -15,3 +15,7 @@
 
 #### HTML Publisher
   * The HTML Publisher plugin is useful to publish HTML reports that your build generates to the job and build pages. It is designed to work with both Freestyle projects as well as being used in a Jenkins Pipeline.
+
+#### Deployment to Target EC2 instance
+  * share the key from jenkins slave to target ec2-instance
+  * Install ssh-agent plugin and configure pipeline syntax (use ssh with private key option: and share private key of node(Slave))
