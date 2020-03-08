@@ -42,13 +42,13 @@ node('node'){
    stage('deployment of application using docker'){
       try {
          sh "docker version"
-         sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile"
+         sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
          sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
          withDockerRegistry(credentialsId: 'docker-hub-registry') {
          sh "docker push rbngtm1/archiveartifacts:newtag"
          }
       } catch(err) {
-         sh "echo error in deployment of an application using docker"
+         sh "echo error in deployment using docker"
       }
    }
 }
