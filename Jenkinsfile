@@ -39,16 +39,30 @@ node('node'){
       }
    }
 
-   stage('deployment of application using docker'){
+   // stage('deployment of application using docker'){
+   //    try {
+   //       sh "docker version"
+   //       sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
+   //       sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
+   //       withDockerRegistry(credentialsId: 'docker-hub-registry') {
+   //       sh "docker push rbngtm1/archiveartifacts:newtag"
+   //       }
+   //    } catch(err) {
+   //       sh "echo error in deployment using docker"
+   //    }
+   // }
+
+   stage('deployment of an application'){
       try {
-         sh "docker version"
-         sh "docker build -t rbngtm1/archiveartifacts:newtag -f Dockerfile ."
-         sh "docker run -p 8080:8080 -d rbngtm1/archiveartifacts:newtag"
-         withDockerRegistry(credentialsId: 'docker-hub-registry') {
-         sh "docker push rbngtm1/archiveartifacts:newtag"
+         sshagent(['target-key-shared']) {
+            sh "scp -o StrictHostKeyChecking=no tomcat.sh ec2-user@10.0.0.137:/tmp"
+            sh "scp -o StrictHostKeyChecking=no symlink_target.sh ec2-user@10.0.0.137:/tmp"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.137 /tmp/tomcat.sh"
+            sh "scp -o StrictHostKeyChecking=no addressbook_main/target/addressbook.war ec2-user@10.0.0.137:/tmp"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@10.0.0.137 /tmp/symlink_target.sh"
          }
-      } catch(err) {
-         sh "echo error in deployment using docker"
+      } catch(err){
+         echo "error in deployment of an application"
       }
    }
 }
