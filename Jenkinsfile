@@ -47,6 +47,8 @@ node('node'){
          withDockerRegistry(credentialsId: 'docker-hub-registry') {
          sh "docker push rbngtm1/archiveartifacts:newtag"
          }
+      } catch(err) {
+         sh "echo error in deployment of an application using docker"
       }
    }
 }
