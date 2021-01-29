@@ -19,5 +19,20 @@ node('node'){
       }
    }
 
+
+
+   stage ("Reporte de test"){
+      try{
+         echo "ejcucion de test"
+         junit allowEmptyResults: true, testResults: 'addressbook_main/target/surefire-reports/*.xml'
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'addressbook_main/target/site', reportFiles: 'surefire-report.html', reportName: 'Reporte_en_HTML', reportTitles: ''])  
+      }catch(err){
+         trrow err
+      }
+
+
+   }
+
+
 }
    
