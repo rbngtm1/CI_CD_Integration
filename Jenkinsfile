@@ -44,11 +44,8 @@ node('node'){
       try{
          sh "docker version"
          sh "docker build -t gilardoni72/archiveartifacts:newtag -f Dockerfile ."
-         sh "docker run -p 8080:8080 -d gilardoni72/archiveartifacts:newtag"
-         
-         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-         sh "docker login -u gilardoni72 -p ${dockerHubPwd}"
-         }
+         sh "docker run -p 8080:8080 -d --name test gilardoni72/archiveartifacts:v1"
+         sh "docker login -u gilardoni72 -p Cine3845)"
          sh "docker push gilardoni72/archiveartifacts:newtag"
       } catch(err){
          sh "echo error en el deploy usando docker"
