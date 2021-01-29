@@ -10,7 +10,7 @@ node('node'){
 
    stage("maven test"){
       try{
-         mvnHome=Tool "nodeMaven"
+         mvnHome=tool "nodeMaven"
          sh "{$mvnHome}/bin/mvn --verion"
          sh "{$mvnHome}/bin/mvn clean test surefire-report:report"
 
