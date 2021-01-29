@@ -8,11 +8,11 @@ node('node'){
       }
    }
 
-   stage("maven test"){
+   stage("Prueba MAVEN"){
       try{
          mvnHome=tool "nodeMaven"
-         sh "{$mvnHome}/bin/mvn --verion"
-         sh "{$mvnHome}/bin/mvn clean test surefire-report:report"
+         sh "$mvnHome/bin/mvn --verion"
+         sh "$mvnHome/bin/mvn clean test surefire-report:report"
 
       } catch (err){
          sh "echo error in La definicion de Maven"
