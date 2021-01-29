@@ -14,10 +14,10 @@ node('node'){
          sh "{$mvnHome}/bin/mvn --verion"
          sh "{$mvnHome}/bin/mvn clean test surefire-report:report"
 
-      } cache (err){
+      } catch (err){
          sh "echo error in La definicion de Maven"
       }
    }
-   
+
 }
    
