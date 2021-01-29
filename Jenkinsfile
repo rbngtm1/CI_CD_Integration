@@ -47,7 +47,7 @@ node('node'){
          sh "docker run -p 8080:8080 -d gilardoni72/archiveartifacts:newtag"
          
          withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-         sh "docker login -u gilardoni72 -p"
+         sh "docker login -u gilardoni72 -p ${dockerHubPwd}"
          }
          sh "docker push gilardoni72/archiveartifacts:newtag"
       } catch(err){
