@@ -29,10 +29,16 @@ node('node'){
       }catch(err){
          trrow err
       }
-
-
    }
 
+   stage ("Compilacion y Artifacts"){
+      try{
+         sh "$mvnHome/bin/mvn clean package -DskipTests=True"
+         archiveArtifacts allowEmptyArchive: true, artifacts: 'addressbook_main/target/**/*.war', followSymlinks: false
+      } catch(err){
+         sh "echo error en la generacion del arifacts"
+      }
+   }
 
 }
    
