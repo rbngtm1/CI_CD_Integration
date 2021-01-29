@@ -11,7 +11,7 @@ node('node'){
    stage("Prueba MAVEN"){
       try{
          mvnHome=tool "nodeMaven"
-         sh "$mvnHome/bin/mvn --verion"
+         sh "$mvnHome/bin/mvn --version"
          sh "$mvnHome/bin/mvn clean test surefire-report:report"
 
       } catch (err){
