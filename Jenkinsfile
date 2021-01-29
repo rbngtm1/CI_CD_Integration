@@ -45,7 +45,10 @@ node('node'){
          sh "docker version"
          sh "docker build -t gilardoni72/archiveartifacts:newtag -f Dockerfile ."
          sh "docker run -p 8080:8080 -d gilardoni72/archiveartifacts:newtag"
-         withDockerRegistry(credentialsId: 'docker-hub-registry') {
+         script {
+            withDockerRegistry(credentialsId: 'docker-hub-registry')
+         }
+          
          sh "docker push gilardoni72/archiveartifacts:newtag"
         }
       } catch(err){
