@@ -14,7 +14,7 @@ node('node'){
          sh "$mvnHome/bin/mvn --version"
          sh "$mvnHome/bin/mvn clean test surefire-report:report"
 
-      } catch (err){
+      } catch(err){
          sh "echo error in La definicion de Maven"
       }
    }
@@ -50,7 +50,7 @@ node('node'){
          }
           
          sh "docker push gilardoni72/archiveartifacts:newtag"
-        }
+        
       } catch(err){
          sh "echo error en el deploy usando docker"
       }
