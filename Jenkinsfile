@@ -40,14 +40,11 @@ node('node'){
       }
    }
 
-   stage("DELETE DOCKER"){
+   stage("DOCKER HUB"){
          sh "docker version"
          withCredentials([string(credentialsId: 'docker-pwd', variable: 'variable1')]) {
          sh "docker login -u gilardoni72 -p '${variable1}' "
          }
-         sh "docker rm -f test"
-         sh "docker rmi gilardoni72/archiveartifacts:v1"
-
    }
    
    stage("Deploy to DOCKER"){
