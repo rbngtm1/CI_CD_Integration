@@ -43,7 +43,10 @@ node('node'){
    stage("Deploy to DOCKER"){
       try{
          sh "docker version"
-         sh "docker login -u gilardoni72 -p 'Cine3845)' "
+         withCredentials([string(credentialsId: 'docker-pwd', variable: 'variable1')]) {
+          sh "docker login -u gilardoni72 -p '${variable1}' "
+          }
+         
          sh "docker build -t gilardoni72/archiveartifacts:v1 -f Dockerfile ."
          sh "docker run -p 8080:8080 -d --name test gilardoni72/archiveartifacts:v1"
          sh "docker push gilardoni72/archiveartifacts:v1"
